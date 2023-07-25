@@ -8,7 +8,6 @@ const removeExtension = (fileName: string) => fileName.split(".")[0];
 
 readdirSync(PATH_ROUTER).filter(el => !el.includes("index")).filter((file) => {
     const cleanName = removeExtension(file);
-    console.log(cleanName)
     import(`./${cleanName}`).then((moduleRouter) => {
         router.use(`/${cleanName}`, moduleRouter.router)
     });
