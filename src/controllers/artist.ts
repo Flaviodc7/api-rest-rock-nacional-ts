@@ -12,7 +12,7 @@ const getArtist = async ({params}: Request, res: Response) => {
         const { id } = params;
         const response = await getArtistService(id);
         const data = response ? response : "ARTIST_NOT_FOUND";
-        res.send(response);
+        res.send(data);
     } catch (e) {
         handleHttp(res, "ERROR_COULDN'T_GET_ARTIST");
     }
