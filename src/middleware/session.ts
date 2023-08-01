@@ -1,15 +1,18 @@
 import { Request, Response, NextFunction } from "express"
 import { verifyToken } from "../utils/jwt.handle";
+import { JwtPayload } from "jsonwebtoken";
+import { RequestExt } from "../interfaces/req-ext";
 
-const checkJwt = (req: Request, res: Response, next: NextFunction) => {
+const checkJwt = (req: RequestExt, res: Response, next: NextFunction) => {
     try {
         const jwtUser = req.headers.authorization || '';
         const jwt = jwtUser.split(" ")[1];
-        const isCorrect = verifyToken(`${jwt}`);
+        const isCorrect = verifyToken(`${jwt}`) as {id: string};
         if (!isCorrect){
             res.status(401);
             res.send('NOT A VALID SESSION');
         } else {
+            req.user = isCorrect;
             next();
         }
     } catch {
