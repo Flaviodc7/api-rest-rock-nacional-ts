@@ -8,13 +8,8 @@ export class ArtistController extends ApiController {
   }
 
   createArtist = async ({ body, headers }: Request, res: Response) => {
-    const { authorization } = headers;
     try {
-      if (authorization) {
-        this.response(res, await this.artistUseCase.createArtist(body, authorization));
-      } else {
-        throw new Error();
-      }
+      this.response(res, await this.artistUseCase.createArtist(body));
     } catch (error) {
       this.response(res, error);
     }
@@ -38,13 +33,8 @@ export class ArtistController extends ApiController {
   };
 
   updateArtist = async ({ body, headers }: Request, res: Response) => {
-    const { authorization } = headers;
     try {
-      if (authorization) {
-        this.response(res, await this.artistUseCase.updateArtist(body, authorization));
-      } else {
-        throw new Error();
-      }
+      this.response(res, await this.artistUseCase.updateArtist(body));
     } catch (error) {
       this.response(res, error);
     }

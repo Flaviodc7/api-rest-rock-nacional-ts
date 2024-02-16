@@ -2,10 +2,10 @@ import { Respuesta } from './api.response';
 import { ArtistEntity } from '../domain/artist.entity';
 
 export interface IArtistUseCase {
-  createArtist: (payload: CreateArtistPayload, authorization: string) => Promise<Respuesta<ArtistEntity>>;
+  createArtist: (payload: CreateArtistPayload) => Promise<Respuesta<ArtistEntity>>;
   getArtist: (id: string) => Promise<Respuesta<ArtistEntity | null>>;
   getArtists: () => Promise<Respuesta<ArtistEntity[]>>;
-  updateArtist: (payload: UpdateArtistPayload, authorization: string) => Promise<Respuesta<ArtistEntity>>;
+  updateArtist: (payload: UpdateArtistPayload) => Promise<Respuesta<ArtistEntity>>;
   deleteArtist: (id: string) => Promise<Respuesta<ArtistEntity | null>>;
 }
 

@@ -2,7 +2,10 @@ import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
 
 export const SchemaCreateArtist = Joi.object({
-  date_of_birth: Joi.string().regex(/^\d{2}\/\d{2}\/\d{4}$/).required().example('DD/MM/YYYY'),
+  date_of_birth: Joi.string()
+    .regex(/^\d{2}\/\d{2}\/\d{4}$/)
+    .required()
+    .example('DD/MM/YYYY'),
   instrument: Joi.string().valid('vocals', 'guitar', 'bass', 'piano', 'drums').required(),
   name: Joi.string().required(),
   nationality: Joi.string().required(),
@@ -21,7 +24,10 @@ export function Create_Artist_Dto(req: Request, res: Response, next: NextFunctio
 }
 
 export const SchemaUpdateArtist = Joi.object({
-  date_of_birth: Joi.string().regex(/^\d{2}\/\d{2}\/\d{4}$/).optional().example('DD/MM/YYYY'),
+  date_of_birth: Joi.string()
+    .regex(/^\d{2}\/\d{2}\/\d{4}$/)
+    .optional()
+    .example('DD/MM/YYYY'),
   id: Joi.string().required(),
   instrument: Joi.string().valid('vocals', 'guitar', 'bass', 'piano', 'drums').required(),
   name: Joi.string().optional(),
