@@ -29,7 +29,7 @@ export const SchemaUpdateArtist = Joi.object({
     .optional()
     .example('DD/MM/YYYY'),
   id: Joi.string().required(),
-  instrument: Joi.string().valid('vocals', 'guitar', 'bass', 'piano', 'drums').required(),
+  instrument: Joi.string().valid('vocals', 'guitar', 'bass', 'piano', 'drums').optional(),
   name: Joi.string().optional(),
   nationality: Joi.string().optional(),
 });
